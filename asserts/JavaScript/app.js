@@ -20,8 +20,12 @@ btc.addEventListener("click", () => {
 });
 
 bteql.addEventListener("click", () => {
-  const result = calculate();
-  display.value = result;
+  if (calculate() !== "error") {
+    const result = calculate();
+    display.value = result;
+  } else {
+    display.value = "ERROR";
+  }
   ansGiven = true;
 });
 
@@ -30,6 +34,6 @@ const calculate = () => {
     ans = eval(display.value);
     return ans;
   } catch (error) {
-    console.log("Error");
+    return "error";
   }
 };
